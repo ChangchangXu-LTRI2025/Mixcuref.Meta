@@ -31,6 +31,10 @@ The meta-layer provides a *single entry point* while preserving the full functio
 
 ## Installation
 
+### Install meta-layer package
+
+remotes::install_github("https://github.com/ChangchangXu-LTRI2025/mixcuref.meta")
+
 ### Install engine packages (individually usable)
 
 remotes::install_github("https://github.com/ChangchangXu-LTRI2025/mixcuref")  
