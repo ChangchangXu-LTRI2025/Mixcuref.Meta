@@ -33,6 +33,6 @@ The meta-layer provides a *single entry point* while preserving the full functio
 
 ### Install engine packages (individually usable)
 
-remotes::install_github("OWNER/mixcuref")  
-remotes::install_github("OWNER/ClipMixcure")  
-remotes::install_github("OWNER/mixcuref.cr")  
+remotes::install_github("https://github.com/ChangchangXu-LTRI2025/mixcuref")  
+remotes::install_github("https://github.com/ChangchangXu-LTRI2025/ClipMixcure")  
+remotes::install_github("https://github.com/ChangchangXu-LTRI2025/mixcuref.cr")  
