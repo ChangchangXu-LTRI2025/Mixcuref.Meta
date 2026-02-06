@@ -33,6 +33,7 @@ Create a mixture cure model specification
 \examples{
 library(Mixcuref.Meta)
 # for MC model fitting with mixcuref() function
+library(mixcuref)
 data(ANNbcBMdat1)
 spec <- mc_spec(
   incidence = ~ Her2,     # cure probability model
@@ -59,6 +60,7 @@ fit <- mc_fit(
 fit
 summary(fit)
 
+library(ClipMixcure)
 # wrap to clip.mixcure()
 data(ANNbcBMdat5_miss)
 library(mice)
@@ -82,6 +84,7 @@ control = list(
 fit2
 summary(fit2)
 
+library(mixcuref.cr)
 spec_plcr <- mc_spec(
   incidence = ~ Her2,     # cure probability model
   latency   = ~ Her2,     # survival model
