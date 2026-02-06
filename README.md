@@ -1,6 +1,6 @@
-# mixcuref.meta
+# Mixcuref.Meta
 
-**mixcuref.meta** is a thin *meta-layer* R package that provides a unified front-end interface for fitting **mixture cure models**, while delegating all estimation to specialised engine packages.
+**Mixcuref.Meta** is a thin *meta-layer* R package that provides a unified front-end interface for fitting **mixture cure models**, while delegating all estimation to specialised engine packages.
 
 The package does **not** re-implement likelihoods or optimization routines. Instead, it standardizes:  
 - model specification,  
@@ -13,7 +13,7 @@ Each engine package remains **fully installable and usable on its own**.
 
 ## Supported engines
 
-`mixcuref.meta` currently supports the following engine packages:
+`Mixcuref.Meta` currently supports the following engine packages:
 
 - **mixcuref**
   Firth-type penalized likelihood (FT-PL) estimation for mixture cure models (e.g. `mixcure.penal.est()`).
