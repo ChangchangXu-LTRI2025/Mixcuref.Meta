@@ -35,7 +35,7 @@ The meta-layer provides a *single entry point* while preserving the full functio
 
 remotes::install_github("https://github.com/ChangchangXu-LTRI2025/mixcuref.meta")
 
-### Install engine packages (individually usable)
+### Automatically installed engine packages include (individually usable)
 
 remotes::install_github("https://github.com/ChangchangXu-LTRI2025/mixcuref")  
 remotes::install_github("https://github.com/ChangchangXu-LTRI2025/ClipMixcure")  
