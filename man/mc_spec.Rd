@@ -59,6 +59,7 @@ fit <- mc_fit(
 )
 fit
 summary(fit)
+coef(fit)
 
 library(ClipMixcure)
 # wrap to clip.mixcure()
