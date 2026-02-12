@@ -1,0 +1,10 @@
+export(mc_spec)
+export(mc_fit)
+
+S3method(print, mc_fit)
+S3method(summary, mc_fit)
+S3method(coef, mc_fit)
+S3method(predict, mc_fit)
+
+importFrom(stats, coef, predict)
+importFrom(utils, packageVersion)

@@ -1,0 +1,124 @@
+
+---
+title: "Using Mixcuref.Meta with Real Breast Cancer Datasets"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using Mixcuref.Meta with Real Breast Cancer Datasets}
+  %\VignetteEngine{rmarkdown::html_vignette}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+## Overview
+
+This vignette demonstrates the use of `Mixcuref.Meta` with real breast cancer datasets:
+
+- `ANNbcBMdat1`
+- `ANNbcBMdat2`
+- `ANNbcBMdat5`
+- `ANNbcBMdat5_miss` (contains missing values)
+
+---
+
+## Example 1: Standard mixture cure model (ANNbcBMdat1)
+
+```{r}
+library(Mixcuref.Meta)
+library(mixcuref)
+library(survival)
+
+data(ANNbcBMdat1)
+
+spec1 <- mc_spec(
+  incidence = ~ Her2,
+  latency   = ~ Her2,
+  data      = ANNbcBMdat1,
+  time      = "Time",
+  status    = "CENS",
+  engine    = "mixcuref"
+)
+
+fit1 <- mc_fit(spec1)
+summary(fit1$engine_fit)
+```
+
+---
+
+## Example 2: PLCR confidence region (ANNbcBMdat2)
+
+```{r}
+library(mixcuref.cr)
+
+data(ANNbcBMdat2)
+
+spec2 <- mc_spec(
+  incidence = ~ Her2,
+  latency   = ~ Her2,
+  data      = ANNbcBMdat2,
+  time      = "Time",
+  status    = "CENS",
+  engine    = "mixcuref.cr"
+)
+
+fit2 <- mc_fit(spec2, control = list(apct = 0.05, pl = FALSE))
+
+plcr_obj <- fit2$engine_fit
+plot.mixcure.penal.polar.plcr(plcr_obj, cr_type = "PLCR")
+mixcure.penal.plcr.area(plcr_obj)
+```
+
+---
+
+## Example 3: Firth-type penalised estimation (ANNbcBMdat5)
+
+```{r}
+data(ANNbcBMdat5)
+
+spec3 <- mc_spec(
+  incidence = ~ Her2 + MENS0,
+  latency   = ~ Her2 + MENS0,
+  data      = ANNbcBMdat5,
+  time      = "Time",
+  status    = "CENS",
+  engine    = "mixcuref"
+)
+
+fit3 <- mc_fit(spec3, control = list(pl = TRUE))
+summary(fit3$engine_fit)
+```
+
+---
+
+## Example 4: Multiple imputation + CLIP inference (ANNbcBMdat5_miss)
+
+```{r}
+library(mice)
+library(ClipMixcure)
+
+data(ANNbcBMdat5_miss)
+
+imp <- mice(ANNbcBMdat5_miss, m = 5, print = FALSE)
+
+spec4 <- mc_spec(
+  incidence = ~ 1,
+  latency   = ~ 1,
+  data      = imp,
+  time      = "Time",
+  status    = "CENS",
+  engine    = "ClipMixcure"
+)
+
+fit4 <- mc_fit(
+  spec4,
+  control = list(
+    method  = "penal_mi",
+    formula = Surv(Time, CENS == 1) ~ Her2 + MENS0 + TUMCT,
+    pl      = FALSE
+  )
+)
+
+clip.mixcure(obj = fit4$engine_fit, pl = FALSE)
+```

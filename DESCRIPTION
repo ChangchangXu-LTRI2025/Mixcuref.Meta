@@ -1,0 +1,24 @@
+Package: Mixcuref.Meta
+Type: Package
+Title: Mixture cure model meta package with Firth-type penalized likelihood for sparse data with missing values
+Version: 1.1.0
+Authors@R: c(
+    person(
+      "Changchang Xu",
+      email = "changchang.xu@alumni.utoronto.ca",
+      role=c("aut","cre")
+    )
+  )
+Description: Mixture cure model meta package with Firth-type penalized likelihood for sparse data with missing values, containing "mixcuref", "ClipMixcure", and "mixcuref.cr" as the sub-packages.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports: mixcuref, ClipMixcure, mixcuref.cr
+Remotes: ChangchangXu-LTRI2025/mixcuref,
+         ChangchangXu-LTRI2025/ClipMixcure,
+         ChangchangXu-LTRI2025/mixcuref.cr
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
