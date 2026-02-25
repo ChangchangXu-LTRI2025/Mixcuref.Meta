@@ -11,40 +11,50 @@ mixture cure models while delegating all estimation to specialised engine
 packages.
 }
 \details{
-The meta-layer does \strong{not} re-implement likelihoods or optimisation
-routines. Instead, it standardises model specification, engine selection, and
-storage of the resulting fitted object.
-
+The meta-layer does \strong{not} re-implement likelihoods or optimisation routines.
+Instead, it standardises model specification, engine selection, and storage of
+the resulting fitted object.
 \subsection{Main functions}{
 \itemize{
-\item \code{mc_spec()} creates a model specification.
-\item \code{mc_fit()} fits the model using the selected engine.
+\item \code{\link[=mc_spec]{mc_spec()}} creates a model specification.
+\item \code{\link[=mc_fit]{mc_fit()}} fits the model using the selected engine.
 }
 }
 
 \subsection{Engines}{
+
 Supported engines are:
 \itemize{
 \item \code{mixcuref} (penalised likelihood estimation)
 \item \code{ClipMixcure} (multiple-imputation workflows and CLIP inference)
 \item \code{mixcuref.cr} (PLCR confidence region edge points and derived summaries)
 }
+
+Each engine package can still be installed and used independently. The
+meta-layer simply provides a consistent front-end.
 }
 
 \subsection{Object model}{
 \itemize{
-\item An \code{mc_spec} object stores formulas, data, time/status column names, and
-the chosen engine.
-\item An \code{mc_fit} object stores \code{engine}, \code{engine_version}, the fitted
-object returned by the engine (\code{engine_fit}), and the original model
-specification (\code{spec}).
+\item An \code{mc_spec} object stores formulas, data, time/status column names, and the
+chosen engine.
+\item An \code{mc_fit} object stores:
+\itemize{
+\item \code{engine} and \code{engine_version}
+\item \code{engine_fit} (the fitted object returned by the engine)
+\item \code{spec} (the original model specification)
 }
 }
+}
+
+\subsection{Getting started}{
 
 See \code{vignette("mixcure-meta", package = "Mixcuref.Meta")} for an end-to-end
 introduction.
 }
+}
 \section{Minimal example}{
+
 \donttest{
 set.seed(1)
 dat <- data.frame(
@@ -67,4 +77,11 @@ fit <- mc_fit(spec)
 fit$engine
 }
 }
-\seealso{\code{\link{mc_spec}}, \code{\link{mc_fit}}}
+
+\seealso{
+\code{\link[=mc_spec]{mc_spec()}}, \code{\link[=mc_fit]{mc_fit()}}
+}
+\author{
+\strong{Maintainer}: Changchang Xu \email{changchang.xu@alumni.utoronto.ca}
+
+}
