@@ -1,7 +1,7 @@
 
 ---
 title: "Mixcuref.Meta: A Unified Interface for Mixture Cure Model Engines"
-author: "Your Name"
+author: "Changchang Xu"
 date: "`r Sys.Date()`"
 output:
   pdf_document:
